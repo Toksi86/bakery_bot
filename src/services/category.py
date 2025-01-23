@@ -1,9 +1,7 @@
 from sqlalchemy.future import select
 
+from src.core.db import AsyncSessionFactory
 from src.models.category import Category
-from src.models.prebase import AsyncSessionFactory
-from src.repositories.repository import Repository
-from src.schemas.category import Category as Category_schema
 
 
 async def get_all() -> list[Category]:
@@ -21,19 +19,5 @@ async def add(name: str, description: str) -> Category:
         return category
 
 
-class CategoryRepository(Repository[Category_schema]):
-    async def get_all(self) -> list[Category_schema]:
-        pass
-
-    async def add(self, **kwargs: object) -> None:
-        pass
-
-    async def update(self, id: int, **kwargs: object) -> None:
-        pass
-
-    async def delete(self, id: int) -> None:
-        pass
-
-
-def get_categories_names(categories: list[Category]):
+def get_categories_names(categories: list[Category]) -> list[Category.name]:
     return [category.name for category in categories]

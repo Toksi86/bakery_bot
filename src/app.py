@@ -1,7 +1,7 @@
 from vkbottle import LoopWrapper
 from vkbottle.bot import Bot
 
-from src.config import TOKEN
+from src.core.config import TOKEN
 from src.handlers import labelers
 
 

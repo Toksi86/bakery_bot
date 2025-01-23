@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Text
 
-from .prebase import Base
+from src.core.db import Base
 
 
 class Category(Base):

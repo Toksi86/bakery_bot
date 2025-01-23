@@ -1,9 +1,8 @@
-# Добавляем импорт классов для определения столбца ID.
 from sqlalchemy import Column, Integer
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import declarative_base, declared_attr, sessionmaker
 
-from src.config import DATABASE_URL
+from src.core.config import DATABASE_URL
 
 
 class PreBase:

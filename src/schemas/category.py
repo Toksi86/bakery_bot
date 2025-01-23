@@ -1,12 +1,9 @@
-from typing import Optional
-
 from pydantic import BaseModel
 
 
-class Category(BaseModel):
-    id: int
+class CategoryBase(BaseModel):
     name: str
-    description: Optional[str]
+    description: str
 
     class Config:
         json_schema_extra = {
@@ -16,3 +13,14 @@ class Category(BaseModel):
                 "description": "Пирог приготовленный в печи с картошкой и луком.",
             }
         }
+
+
+class CategoryCreate(CategoryBase):
+    pass
+
+
+class Category(CategoryBase):
+    id: int
+
+    class Config:
+        orm_mode = True

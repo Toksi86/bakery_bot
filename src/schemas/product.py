@@ -1,10 +1,11 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
-class Product(BaseModel):
-    id: int
+class ProductBase(BaseModel):
     name: str
-    description: str = ""
+    description: Optional[str]
     category_id: int
 
     class Config:
@@ -16,3 +17,15 @@ class Product(BaseModel):
                 "category_id": 2,
             }
         }
+
+
+class ProductCreate(ProductBase):
+    pass
+
+
+class Product(ProductBase):
+    id: int
+    category_id: int
+
+    class Config:
+        orm_mode = True
